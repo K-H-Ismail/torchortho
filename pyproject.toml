@@ -1,0 +1,20 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+[project]
+name = "torchortho"
+version = "0.1.0"
+authors = [
+  { name="Ismail Khalfaoui-Hassani", email="i.khalfaoui@fz-juelich.de" },
+]
+description = "torchortho is a simple PyTorch package that efficiently implements the Hermite Activation function and other activation functions."
+readme = "README.md"
+requires-python = ">=3.6"
+classifiers = [
+    "Programming Language :: Python :: 3.6",
+    "License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)",
+    "Operating System :: OS Independent",
+]
+[project.urls]
+"Homepage" = "https://github.com/K-H-Ismail/torchortho"
+"Bug Tracker" = "https://github.com/K-H-Ismail/torchortho/issues"
