@@ -29,7 +29,9 @@ try:
             if n > 1:
                 out[base_idx + 1] = value  # He_1(x) = x
             for k in range(2, n):
-                out[base_idx + k] = value * out[base_idx + k - 1] - (k - 1) * out[base_idx + k - 2]
+                out[base_idx + k] = (
+                    value * out[base_idx + k - 1] - (k - 1) * out[base_idx + k - 2]
+                )
 
     @cuda.jit("void(float32[:], int64, float32[:], float32[:])")
     def hermite_backward_cuda_kernel(x, n, out, grad_out):
@@ -43,10 +45,11 @@ try:
                 grad += x[base_idx + k] * k * out[base_idx + k - 1]
             grad_out[idx] = grad
 
-except Exception as e:
-    print("running on cpu!")
+except Exception as _:
+    print("No numba installed or no CUDA GPU found, running on cpu!")
 
-class hermite_polynomials_numba(Function):
+
+class HermitePolynomialsNumba(Function):
     @staticmethod
     def forward(ctx, input: Tensor, degree: int) -> Tensor:
         """Computes Hermite polynomials via CUDA or CPU."""
@@ -81,3 +84,6 @@ class hermite_polynomials_numba(Function):
             grad_output.detach().flatten(),
         )
         return (grad_output, None)
+
+
+hermite_polynomials_numba = HermitePolynomialsNumba.apply

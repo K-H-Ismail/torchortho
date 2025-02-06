@@ -207,10 +207,7 @@ class HermiteActivation(nn.Module):
         # Determine device
         device = x.device.type
         if device == "cuda" and self.use_numba:
-            return (
-                hermite_polynomials_numba.apply(x, self.degree)
-                / self.normalization_term
-            )
+            return hermite_polynomials_numba(x, self.degree) / self.normalization_term
         else:
             return self.hermite_polynomials_pytorch(x)
 
