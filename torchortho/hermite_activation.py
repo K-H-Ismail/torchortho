@@ -18,8 +18,6 @@ from torchortho.cuda import hermite_polynomials_numba
 import os
 import pickle
 
-pi = 3.141592653589793
-
 
 class HermiteActivation(nn.Module):
     def __init__(
@@ -50,7 +48,7 @@ class HermiteActivation(nn.Module):
         coefficients_std[0] = 0.66549  # sqrt((pi^2 /6) - zeta(3))
         coefficients_std[1:] = 1.0 / (torch.arange(1, degree + 1) ** (3 / 2))
         self.coefficients = nn.Parameter(
-            coefficients_std * math.sqrt(6.0) / pi, requires_grad=requires_grad
+            coefficients_std * math.sqrt(6.0) / math.pi, requires_grad=requires_grad
         )
         self.use_numba = use_numba
         if self.use_numba:

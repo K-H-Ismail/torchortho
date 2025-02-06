@@ -18,8 +18,6 @@ from torch.nn import init
 import os
 import pickle
 
-pi = 3.141592653589793
-
 
 class FourierActivation(nn.Module):
     def __init__(self, degree, act_init=None, requires_grad=True, load_cached=True):
@@ -40,18 +38,18 @@ class FourierActivation(nn.Module):
         self.fundamental = nn.Parameter(torch.empty(1), requires_grad=requires_grad)
         self.phases = nn.Parameter(torch.empty(degree), requires_grad=requires_grad)
 
-        # init.normal_(self.fundamental, 0, pi * pi * math.sqrt(2 / 45))
+        # init.normal_(self.fundamental, 0, math.pi * math.pi * math.sqrt(2 / 45))
         init.constant_(
-            self.fundamental, 0.66549 * math.sqrt(6.0) / pi
+            self.fundamental, 0.66549 * math.sqrt(6.0) / math.pi
         )  # sqrt((pi^2 /6) - zeta(4))
-        init.constant_(self.phases, pi / 4)
+        init.constant_(self.phases, math.pi / 4)
 
         self.coefficients = nn.Parameter(
-            (1 / torch.arange(1, degree + 1) ** (3 / 2)) * math.sqrt(6.0) / pi,
+            (1 / torch.arange(1, degree + 1) ** (3 / 2)) * math.sqrt(6.0) / math.pi,
             requires_grad=requires_grad,
         )
         # to have same gain as GELU, useful for drop-in replacement
-        grid = torch.arange(1, self.degree + 1) * pi / math.sqrt(3)
+        grid = torch.arange(1, self.degree + 1) * math.pi / math.sqrt(3)
         # self.register_buffer("grid", grid)
         self.grid = nn.Parameter(grid, requires_grad=requires_grad)
 
@@ -108,7 +106,7 @@ class FourierActivation(nn.Module):
             x = z.cos()
             x = (x * coefficients).sum(-1) + fundamental
 
-            x_deriv = z + pi / 2
+            x_deriv = z + math.pi / 2
             x_deriv = x_deriv.cos()
             x_deriv = (x_deriv * coefficients * grid).sum(-1)
             return x, x_deriv, y, y_deriv
