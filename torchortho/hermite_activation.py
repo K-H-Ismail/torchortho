@@ -45,18 +45,18 @@ class HermiteActivation(nn.Module):
         self.load_cached = load_cached
         # Initialize coefficients as learnable parameters
         coefficients_std = torch.zeros(degree + 1)
-        coefficients_std[0] = 0.66549  # sqrt((pi^2 /6) - zeta(3))
-        coefficients_std[1:] = 1.0 / (torch.arange(1, degree + 1) ** (3 / 2))
+        coefficients_std[0] = math.sqrt(1.0 - (1 / math.factorial(degree)))
+        coefficients_std[1:] = 1.0
         self.coefficients = nn.Parameter(
-            coefficients_std * math.sqrt(6.0) / math.pi, requires_grad=requires_grad
+            coefficients_std * (1.0 / math.sqrt(math.e)), requires_grad=requires_grad
         )
         self.use_numba = use_numba
         if self.use_numba:
             self.register_buffer(
                 "normalization_term",
-                torch.arange(1, self.degree + 2).lgamma().exp().sqrt(),
+                torch.arange(1, self.degree + 2).lgamma().exp(),
             )
-        coeffs, grid = self.init_grid(torch.tensor(self.degree))
+        coeffs, grid = self.init_grid(self.degree)
         self.register_buffer("coeffs", coeffs)
         self.register_buffer("grid", grid)
         if clamp:
@@ -168,7 +168,7 @@ class HermiteActivation(nn.Module):
             for j in range(n // 2 + 1):
                 if j <= i // 2:
                     coeffs[i][j] = math.exp(
-                        0.5 * math.log(math.factorial(i))
+                        # 0.5 * math.log(math.factorial(i))
                         - math.log(math.factorial(j))
                         - math.log(math.factorial(i - 2 * j))
                         - (j * math.log(2))
