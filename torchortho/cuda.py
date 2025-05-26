@@ -46,7 +46,7 @@ try:
             grad_out[idx] = grad
 
 except Exception as _:
-    print("No numba installed or no CUDA GPU found, running on cpu!")
+    pass
 
 
 class HermitePolynomialsNumba(Function):
