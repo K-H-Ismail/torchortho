@@ -11,10 +11,12 @@ For reproducing experiments:
 - Language: https://github.com/K-H-Ismail/pytorch-language-models
 """
 
-import torch
-import torch.nn as nn
+import math
 import os
 import pickle
+
+import torch
+import torch.nn as nn
 
 
 class TropicalActivation(nn.Module):
@@ -38,7 +40,9 @@ class TropicalActivation(nn.Module):
         Returns:
         torch.Tensor: Output tensor after applying Tropical activation function.
         """
-        return (x.unsqueeze(-1) * self.powers + self.coefficients).max(-1)[0]
+        return (math.sqrt(2) / self.degree) * (
+            x.unsqueeze(-1) * self.powers + self.coefficients
+        ).max(-1)[0]
 
 
 class TropicalRationalActivation(nn.Module):
