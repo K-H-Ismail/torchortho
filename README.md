@@ -135,8 +135,8 @@ For questions or collaborations, reach out via **[GitHub Issues](https://github.
 If you use `torchortho` in your research, please cite the following paper:
 
 ```bibtex
-@article{khalfaoui2025learnable,
-  title={Learnable polynomial, trigonometric, and tropical activations},
+@article{khalfaoui2025polynomial,
+  title={Polynomial, trigonometric, and tropical activations},
   author={Khalfaoui-Hassani, Ismail and Kesselheim, Stefan},
   journal={arXiv preprint arXiv:2502.01247},
   year={2025}
