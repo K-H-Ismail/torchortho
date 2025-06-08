@@ -16,7 +16,7 @@ These **adaptive activations** dynamically adjust during training, offering impr
 
 ## **📜 Paper Reference**
 This library is based on the paper:  
-📄 **[Learnable Polynomial, Trigonometric, and Tropical Activations](https://arxiv.org/abs/2502.01247)** *(Khalfaoui-Hassani & Kesselheim, 2025)*.  
+📄 **[Polynomial, Trigonometric, and Tropical Activations](https://arxiv.org/abs/2502.01247)** *(Khalfaoui-Hassani & Kesselheim, 2025)*.  
 
 For experimental results, check our repos:  
 - **Vision models** (ConvNeXt with `torchortho` activations): [🔗 GitHub](https://github.com/K-H-Ismail/ConvNeXt-ortho)  
@@ -97,7 +97,7 @@ Unlike static activations (ReLU, GELU), `torchortho` functions **dynamically ada
 | **Hermite Activation**          | Adaptive polynomial approximation, variance-preserving, smooth optimization |
 | **Fourier Activation**          | Captures periodic structures in data (useful for NLP, physics-based models, and time-series) |
 | **Tropical Polynomial Activation** | Convex activation for structured learning (e.g., decision boundaries, optimization landscapes) |
-| **Rational Activation**         | Generalizes standard activation functions (e.g., Pade approximants can replicate ReLU, GELU, or even SwiGLU) |
+| **Rational Activation**         | Generalizes standard Tropical activation functions for non-convex function fitting |
 
 ### 2️⃣ Improved Expressivity and Gradient Flow  
 - **Better function approximation** → Increases expressivity for deep networks.  
@@ -135,8 +135,8 @@ For questions or collaborations, reach out via **[GitHub Issues](https://github.
 If you use `torchortho` in your research, please cite the following paper:
 
 ```bibtex
-@article{khalfaoui2025learnable,
-  title={Learnable polynomial, trigonometric, and tropical activations},
+@article{khalfaoui2025polynomial,
+  title={Polynomial, trigonometric, and tropical activations},
   author={Khalfaoui-Hassani, Ismail and Kesselheim, Stefan},
   journal={arXiv preprint arXiv:2502.01247},
   year={2025}
