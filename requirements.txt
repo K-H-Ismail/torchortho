@@ -1,2 +1,2 @@
 torch
-numba
+numba-cuda
