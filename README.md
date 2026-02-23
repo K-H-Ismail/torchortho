@@ -1,9 +1,10 @@
-# torchortho 📐  
+# torchortho 📐
+[![OpenReview Forum](https://img.shields.io/badge/OpenReview-ICLR%202026-8c1b13)](https://openreview.net/forum?id=QywpTFx86x&referrer=%5BAuthor%20Console%5D(%2Fgroup%3Fid%3DICLR.cc%2F2026%2FConference%2FAuthors%23your-submissions))
 [![arXiv](https://img.shields.io/badge/arXiv-2502.01247-b31b1b.svg)](https://arxiv.org/abs/2502.01247)
 [![PyPI version](https://img.shields.io/pypi/v/torchortho)](https://pypi.org/project/torchortho/)
 [![License: GPL-3.0](https://img.shields.io/badge/License-GPL%203.0-blue.svg)](https://opensource.org/licenses/GPL-3.0)
 [![Python Versions](https://img.shields.io/pypi/pyversions/torchortho.svg)](https://pypi.org/project/torchortho/)
-[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/learnable-polynomial-trigonometric-and/text-generation-on-openwebtext)](https://paperswithcode.com/sota/text-generation-on-openwebtext?p=learnable-polynomial-trigonometric-and)
+<!---[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/learnable-polynomial-trigonometric-and/text-generation-on-openwebtext)](https://paperswithcode.com/sota/text-generation-on-openwebtext?p=learnable-polynomial-trigonometric-and)-->
 
 `torchortho` is a **PyTorch library** for **learnable activation functions** based on:  
 - **Hermite Polynomials** 🧙‍♂️
@@ -133,7 +134,16 @@ For questions or collaborations, reach out via **[GitHub Issues](https://github.
 
 ## 📚 Citation  
 If you use `torchortho` in your research, please cite the following paper:
-
+```bibtex
+@inproceedings{khalfaoui-hassani2026polynomial,
+    title={Polynomial, trigonometric, and tropical activations},
+    author={Ismail Khalfaoui-Hassani and Stefan Kesselheim},
+    booktitle={The Fourteenth International Conference on Learning Representations},
+    year={2026},
+    url={https://openreview.net/forum?id=QywpTFx86x}
+}
+```
+or 
 ```bibtex
 @article{khalfaoui2025polynomial,
   title={Polynomial, trigonometric, and tropical activations},
